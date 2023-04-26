@@ -42,41 +42,46 @@
 
         .login {
             width: 90%;
-            margin-left:auto;
-            margin-right:auto;
             height: 300px;
             border: 1px solid var(--grey);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding:20px;
             border-radius: 30px;
+        }
+
+        input {
+            outline: none;
         }
 
         #user,
         #pass {
             border-radius: 20px;
+            padding: 5px;
+            background-color: #eee;
             text-align: center;
             color: #434347;
             outline: none;
             border: 1px solid var(--grey);
             transition: 0.5s;
-            margin: 10px;
+            margin: 20px;
         }
 
         #user:focus,
         #pass:focus {
             border: 2px solid var(--main-color);
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
-            background: #81a9f9;
-            color: #fff;
             outline: none;
         }
 
-        #user:focus::placeholder,
-        #pass:focus::placeholder {
-            color: #fff;
+        .in input:focus~label,
+        .in input:valid~label {
+            top: 10px;
+            left: 40px;
+            color: #0057ff;
+            background-color: #eee;
+            padding: 5px;
         }
 
         input[type=submit] {
@@ -95,8 +100,21 @@
             font-weight: 700;
         }
 
+        .in {
+            position: relative;
 
+        }
 
+        .in label,
+        .in label {
+            position: absolute;
+            text-align: center;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: 0.5s;
+            font-size: 16px;
+        }
 
 
 
@@ -125,6 +143,7 @@
                 margin: 50px;
             }
 
+
         }
 
         /* laptop */
@@ -146,8 +165,15 @@
         <form action="">
             <div class="login">
 
-                <input type="text" placeholder="username" name="user" id="user">
-                <input type="password" placeholder="password" name="pass" id="pass">
+                <div class="in">
+                    <input type="text" required="required" name="user" id="user">
+                    <label for="user">username</label>
+                </div>
+
+                <div class="in">
+                    <input type="password" required="required" name="pass" id="pass" minlength="6" maxlength="8">
+                    <label for="pass">password</label>
+                </div>
                 <input type="submit" value="login">
             </div>
         </form>
